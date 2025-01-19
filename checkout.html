@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- For browsers -->
+<link rel="icon" type="image/png" sizes="16x16" href="https://cdn-icons-png.flaticon.com/512/14079/14079391.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cdn-icons-png.flaticon.com/512/14079/14079391.png">
+
+<!-- For Apple devices -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://cdn-icons-png.flaticon.com/512/14079/14079391.png">
+
+<!-- Fallback for old browsers -->
+<link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/14079/14079391.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amazon Checkout Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif; /* Similar to Amazon's font */
+            background-color: #f3f3f3; /* Amazon's default background color */
+            color: #333; /* Amazon text color */
+        }
+
+        h1, h2, h3 {
+            font-weight: 700; /* Bold for headings */
+        }
+
+        p {
+            font-weight: 400; /* Normal weight for paragraphs */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+        }
+        .header {
+            background-color: #232f3e;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+        }
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .input-group input:focus, .input-group select:focus {
+            border-color: #ffa41c;
+            outline: none;
+        }
+        .button {
+            background-color: #ffa41c;
+            color: white;
+            padding: 20px 80px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #ff8c00;
+        }
+        .review-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fefefe;
+        }
+        .review-item img {
+            width: 60px;
+            margin-right: 15px;
+        }
+        .review-item .item-details {
+            flex-grow: 1;
+        }
+        .fulfilled {
+            width: 18px;
+            margin-left: 5px;
+        }
+        .delivery-options {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .delivery-options p {
+            margin: 5px 0;
+        }
+        .additional-services {
+            margin-top: 10px;
+        }
+        .additional-services input {
+            margin-right: 5px;
+        }
+        .order-summary-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            text-align: left;
+            margin-top: 15px;
+        }
+        .order-summary-box .order-total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #b12704;
+        }
+        .order-summary-box p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .unavailable {
+            color: #999;
+            font-style: italic;
+        }
+        .unavailable input {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+		        .payment-options {
+            display: flex;
+            gap: 20px;
+        }
+        .payment-option {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            flex: 1;
+            background-color: #f7f7f7;
+            position: relative;
+            cursor: pointer;
+        }
+        .payment-option img {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+            filter: grayscale(100%);
+        }
+        .payment-option.selected img {
+            filter: grayscale(0%);
+        }
+        .payment-option.unavailable {
+            cursor: not-allowed;
+            color: #999;
+        }
+        .payment-option.unavailable img {
+            filter: grayscale(100%);
+            opacity: 0.6;
+        }
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between logo and other elements */
+    background-color: #232f3e; /* Amazon's header background color */
+    padding: 10px 20px; /* Adjust padding for better spacing */
+    height: 60px; /* Adjust header height */
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* Center the logo vertically */
+}
+
+.amazon-logo {
+    max-height: 40px; /* Resize the logo */
+    width: auto; /* Maintain aspect ratio */
+}
+
+
+
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <img src="https://static.cdnlogo.com/logos/a/21/amazon-in.svg" alt="Amazon Logo" class="amazon-logo">
+    </div>
+</div>
+
+
+    <div class="container">
+        <!-- Address Section -->
+        <div class="section">
+            <h2>1. Enter a New Shipping Address</h2>
+            <div class="input-group">
+                <label for="country">Country/Region</label>
+                <select id="country">
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name">
+            </div>
+            <div class="input-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" id="mobile" placeholder="Enter your mobile number">
+            </div>
+            <div class="input-group">
+                <label for="pincode">Pincode</label>
+                <input type="text" id="pincode" placeholder="6 digits [0-9] PIN code">
+            </div>
+            <div class="input-group">
+                <label for="address">Flat, House no., Building, Company, Apartment</label>
+                <input type="text" id="address" placeholder="Enter address">
+            </div>
+            <div class="input-group">
+                <label for="area">Area, Street, Sector, Village</label>
+                <input type="text" id="area" placeholder="Enter area">
+            </div>
+            <div class="input-group">
+                <label for="landmark">Landmark</label>
+                <input type="text" id="landmark" placeholder="E.g. near Apollo hospital">
+            </div>
+            <div class="input-group">
+                <label for="city">Town/City</label>
+                <input type="text" id="city" placeholder="Enter town/city">
+            </div>
+            <div class="input-group">
+                <label for="state">State</label>
+                <select id="state">
+<option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+<option value="Assam">Assam</option>
+<option value="Bihar">Bihar</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Manipur">Manipur</option>
+<option value="Meghalaya">Meghalaya</option>
+<option value="Mizoram">Mizoram</option>
+<option value="Nagaland">Nagaland</option>
+<option value="Odisha">Odisha</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Sikkim">Sikkim</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Telangana">Telangana</option>
+<option value="Tripura">Tripura</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="Uttarakhand">Uttarakhand</option>
+<option value="West Bengal">West Bengal</option>
+<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+<option value="Chandigarh">Chandigarh</option>
+<option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+<option value="Lakshadweep">Lakshadweep</option>
+<option value="Delhi">Delhi</option>
+<option value="Puducherry">Puducherry</option>
+<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+<option value="Ladakh">Ladakh</option>
+
+                </select>
+            </div>
+        </div>
+
+        <!-- Payment Section -->
+<div class="section">
+    <h2>2. Select a Payment Method</h2>
+    <div class="input-group">
+        <input type="radio" id="card" name="payment" value="card" disabled>
+        <label for="card" class="unavailable">Credit or Debit Card (Unavailable)</label>
+    </div>
+    <div class="input-group">
+        <input type="radio" id="netbanking" name="payment" value="netbanking">
+        <label for="netbanking">Net Banking</label>
+    </div>
+    <div class="input-group">
+        <input type="radio" id="cod" name="payment" value="cod" disabled>
+        <label for="cod" class="unavailable">Cash on Delivery (Unavailable)</label>
+    </div>
+    <div class="input-group">
+        <input type="radio" id="upi" name="payment" value="upi" onclick="showUPIApps()">
+        <label for="upi">Other UPI Apps</label>
+    </div>
+
+    <!-- UPI Apps Section -->
+<div id="upi-apps" style="display: none; margin-top: 10px; text-align: center;">
+    <p><strong>Select UPI App:</strong></p>
+    <div class="upi-options">
+        <label class="upi-app">
+            <input type="radio" name="upi-app" value="paytm" onclick="highlightSelected('paytm')" />
+            <img src="https://raw.githubusercontent.com/hdpngworld/HPW/main/uploads/650d41381232a-l.png" id="paytm" class="upi-icon selected" />
+        </label>
+        <label class="upi-app">
+            <input type="radio" name="upi-app" value="phonepe" onclick="highlightSelected('phonepe')" />
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/phonepe-icon.png" id="phonepe" class="upi-icon" />
+        </label>
+        <label class="upi-app">
+            <input type="radio" name="upi-app" value="gpay" onclick="highlightSelected('gpay')" />
+            <img src="https://w7.pngwing.com/pngs/191/51/png-transparent-google-pay-or-tez-hd-logo-thumbnail.png" id="gpay" class="upi-icon" />
+        </label>
+    </div>
+</div>
+
+<style>
+    .upi-options {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .upi-app {
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .upi-app input[type="radio"] {
+        display: none; /* Hide the radio button */
+    }
+
+    .upi-icon {
+        width: 80px;
+        height: auto;
+        cursor: pointer;
+        transition: filter 0.3s ease;
+    }
+
+    .upi-icon.selected {
+        filter: grayscale(0); /* Full color */
+    }
+
+    .upi-icon {
+        filter: grayscale(1); /* Black-and-white by default */
+    }
+</style>
+
+<script>
+    // Show UPI apps when "Other UPI Apps" is selected
+    function showUPIApps() {
+        const upiAppsSection = document.getElementById("upi-apps");
+        upiAppsSection.style.display = "block"; // Show the UPI apps section
+    }
+
+    // Highlight the selected UPI app
+    function highlightSelected(selectedId) {
+        const upiApps = document.querySelectorAll(".upi-icon");
+        upiApps.forEach((app) => {
+            app.classList.remove("selected"); // Reset all icons
+        });
+
+        const selectedApp = document.getElementById(selectedId);
+        if (selectedApp) {
+            selectedApp.classList.add("selected"); // Highlight the selected app
+        }
+    }
+
+    // Handle the "Place Your Order and Pay" button click
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".button").addEventListener("click", () => {
+            const selectedPayment = document.querySelector("input[name='payment']:checked");
+
+            if (!selectedPayment) {
+                alert("Please select a payment method.");
+                return;
+            }
+
+            if (selectedPayment.value === "upi") {
+                const selectedUPIApp = document.querySelector("input[name='upi-app']:checked");
+                if (!selectedUPIApp) {
+                    alert("Please select a UPI app.");
+                    return;
+                }
+
+                // Redirect based on the selected UPI app
+                let redirectURL = "";
+                if (selectedUPIApp.value === "paytm") {
+                    redirectURL = "/pay/paytm?amount=599";
+                } else if (selectedUPIApp.value === "phonepe") {
+                    redirectURL = "/pay/phonepe?amount=599";
+                } else if (selectedUPIApp.value === "gpay") {
+                    redirectURL = "/pay/gpay?amount=599";
+                }
+
+                console.log("Redirecting to:", redirectURL); // Debug log for redirection
+                window.location.href = redirectURL; // Perform redirection
+            } else {
+                alert("Other payment methods are currently unavailable.");
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Review Section -->
+        <div class="section">
+            <h2>3. Review Items and Delivery</h2>
+            <div class="review-item">
+                <img src="https://m.media-amazon.com/images/I/61-r9zOKBCL._AC_AA150_.jpg" alt="iPhone 13">
+                <div class="item-details">
+                    <p><strong>iPhone 13 (128GB) - Green</strong> <img class="fulfilled" src="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px._CB485936079_.png" alt="Amazon Fulfilled"></p>
+                    <p>Sold by: Clicktech Retail Pvt Ltd</p>
+                </div>
+            </div>
+            <div class="delivery-options">
+                <p><strong>Choose a delivery option:</strong></p>
+                <p>Monday, 27 Jan - <strong>FREE Delivery</strong></p>
+                <div class="additional-services">
+                    <p><strong>Select additional services:</strong></p>
+                    <label> Choose your convenient timeslot for installation service</label><br>
+                    <label><input type="checkbox"> Tuesday, 28 Jan, 10 AM - 2 PM - ₹999.00 extra for Phone setup service </label><br>
+                    <a href="#">Change appointment time</a><br>
+                    <a href="#">Installation and demo by verified experts Details</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary-box">
+            <p class="order-total">Order Total: ₹499</p>
+            <p>By placing your order, you agree to Amazon's <a href="#">privacy notice</a> and <a href="#">conditions of use</a>.</p>
+        </div>
+
+        <div class="place-order-button">
+            <button class="button">Place Your Order and Pay</button>
+        </div>
+    </div>
+</body>
+</html>
