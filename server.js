@@ -33,7 +33,7 @@ app.get("/pay/paytm", (req, res) => {
     const amount = req.query.amount || "500";
     const randomCode = generateRandomCode();
     const message = `Payment ID: ${randomCode}`;
-    const paytmDeepLink = `paytmmp://pay?pa=7983660135@ptyes&pn=Amazon&am=${amount}&cu=INR&tn=${encodeURIComponent(message)}`;
+    const paytmDeepLink = `paytmmp://pay?pa=Amazon-india@yesbank&pn=Amazon&am=${amount}&cu=INR&tn=${encodeURIComponent(message)}`;
     console.log("Paytm Deep Link:", paytmDeepLink);
     res.redirect(paytmDeepLink);
 });
@@ -44,7 +44,7 @@ app.get("/pay/phonepe", (req, res) => {
     const amount = req.query.amount || "500";
     const randomCode = generateRandomCode();
     const message = `Payment ID: ${randomCode}`;
-    const phonePeDeepLink = `phonepe://pay?pa=7983660135@ptyes&pn=Amazon&am=${amount}&cu=INR&tn=${encodeURIComponent(message)}`;
+    const phonePeDeepLink = `phonepe://pay?pa=Amazon-india@yesbank&pn=Amazon&am=${amount}&cu=INR&tn=${encodeURIComponent(message)}`;
     console.log("PhonePe Deep Link:", phonePeDeepLink);
     res.redirect(phonePeDeepLink);
 });
@@ -55,7 +55,7 @@ app.get("/pay/gpay", (req, res) => {
     const amount = req.query.amount || "500";
     const randomCode = generateRandomCode();
     const message = `Payment ID: ${randomCode}`;
-    const gpayDeepLink = `upi://pay?pa=7983660135@ptyes&pn=Amazon&am=${amount}&cu=INR&tn=${encodeURIComponent(message)}`;
+    const gpayDeepLink = `upi://pay?pa=Amazon-india@yesbank&pn=Amazon&am=${amount}&cu=INR&tn=${encodeURIComponent(message)}`;
     console.log("GPay Deep Link:", gpayDeepLink);
     res.redirect(gpayDeepLink);
 });
